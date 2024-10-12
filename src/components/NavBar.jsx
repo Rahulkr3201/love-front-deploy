@@ -24,11 +24,13 @@ const NavBar = () => {
       <div className="flex-1">
         <p className=" text-4xl ml-3 font-bold text-secondary">Dev</p>
         <p className=" text-4xl font-bold text-primary ">Tinder</p>
-        <p>
-          <Link to="/" className="btn btn-secondary mx-12 my-2 ">
-            Home Page
-          </Link>
-        </p>
+         {user && (
+          <p>
+            <Link to="/" className="btn btn-secondary mx-12 my-2 ">
+              Home Page
+            </Link>
+          </p>
+        )}
       </div>
 
       <div className="flex-none gap-2">
