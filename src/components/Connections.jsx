@@ -31,6 +31,16 @@ const Connections = () => {
         </div>
       </div>
     );
+   const deleteConnection = async (_id) => {
+    try {
+      const res = await axios.get(BASE_URL + "/remove" + "/" + _id, {
+        withCredentials: true,
+      });
+      fetchConnections();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -63,6 +73,12 @@ const Connections = () => {
                 </h1>
                 <p>{about}</p>
               </div>
+               <button
+                className="btn btn-primary ml-9 my-auto "
+                onClick={() => deleteConnection(_id)}
+              >
+                Remove
+              </button>
             </div>
           );
         })}
