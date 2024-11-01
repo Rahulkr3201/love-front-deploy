@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300 ">
       <div className="flex-1">
-        <p className=" text-4xl ml-3 font-bold text-secondary">Dev</p>
+        <p className=" text-4xl ml-3 font-bold text-secondary">Luv</p>
         <p className=" text-4xl font-bold text-primary ">Tinder</p>
          {user && (
           <p>
