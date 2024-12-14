@@ -84,7 +84,9 @@ const Login = () => {
             <input
               type="password"
               value={password}
-              placeholder="Password"
+              placeholder="password"
+              <p>min 8 digits</p>
+            <p>eg.Abcd@123</p>
               className=" ml-16 mt-3 input input-ghost w-full max-w-xs border-blue-400"
               onChange={(e) => setpassword(e.target.value)}
             />
