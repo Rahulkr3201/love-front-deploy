@@ -100,7 +100,7 @@ const EditProfile = ({ user }) => {
               <textarea
                 value={about}
                 className="textarea textarea-info ml-16 w-full h-12 "
-                placeholder="skills"
+                placeholder="about"
                 onChange={(e) => setabout(e.target.value)}
               ></textarea>
               <label className="text-sm ml-16">Skills:</label>

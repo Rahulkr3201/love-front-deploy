@@ -32,12 +32,23 @@ const Connections = () => {
       </div>
     );
 
+  const deleteConnection = async (_id) => {
+    try {
+      const res = await axios.get(BASE_URL + "/remove" + "/" + _id, {
+        withCredentials: true,
+      });
+      fetchConnections();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
-      <div className="bg-base-100 ">
-        <div className=" w-full mt-2  ">
-          <div className="btn btn-secondary flex justify-center">
-            <span> My Connections....</span>
+      <div className=" py-8">
+        <div className="w-full mb-8 text-center">
+          <div className="btn btn-primary font-semibold text-gray-800">
+            Connections
           </div>
         </div>
         {connections.map((connection) => {
@@ -54,16 +65,21 @@ const Connections = () => {
           return (
             <div
               key={_id}
-              className=" w-1/2 mt-4 flex rounded-lg bg-base-300 mx-auto"
+              className=" max-w-3xl mx-auto mt-3 flex flex-col md:flex-row items-center bg-gray-300 rounded-xl shadow-lg p-3 space-y-2 md:space-y-0 md:space-x-6 hover:shadow-xl transition-shadow duration-300"
             >
               <img alt="photo" className="w-20 h-20 m-3" src={photoUrl} />
-              <div className="ml-3">
-                <h1 className="mt-4 font-bold text-2xl">
+              <div className="ml-3 text-black">
+                <h1 className="mt-4 font-bold text-black text-2xl">
                   {firstName + " " + lastName}
                 </h1>
                 <p>{about}</p>
               </div>
-              <button className="btn btn-primary ml-9 my-auto ">Remove</button>
+              <button
+                className="btn btn-primary hover:bg-red-600 ml-9 my-auto "
+                onClick={() => deleteConnection(_id)}
+              >
+                Remove
+              </button>
             </div>
           );
         })}

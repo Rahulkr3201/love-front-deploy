@@ -2,15 +2,17 @@ import { BASE_URL } from "../utils/constant.js";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice.js";
+import { motion } from "framer-motion";
+import { FaUserTimes, FaUserCheck } from "react-icons/fa";
 
-const userCard = ({ user }) => {
+const UserCard = ({ user, showActions = true }) => {
   const dispatch = useDispatch();
   const { _id, firstName, lastName, photoUrl, gender, age, about, skills } =
     user;
 
   const handleSendRequest = async (status, userId) => {
     try {
-      const res = await axios.post(
+      await axios.post(
         BASE_URL + "/request/send/" + status + "/" + userId,
         {},
         { withCredentials: true }
@@ -20,35 +22,57 @@ const userCard = ({ user }) => {
       console.log(err);
     }
   };
+
   return (
-    <div>
-      <div className="card bg-base-300 w-80 mt-3 mb-28 shadow-xl">
-        <figure>
-          <img src={photoUrl} alt="user" />
+    <motion.div
+      className="flex justify-center items-center"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="card bg-white w-80 mt-1 mb-28 shadow-xl rounded-lg overflow-hidden">
+        <figure className="h-56 overflow-hidden">
+          <img
+            src={photoUrl}
+            alt="user"
+            className="w-full h-full object-cover"
+          />
         </figure>
-        <div className="card-body p-5 ">
-          <h2 className="card-title">{firstName + " " + lastName}</h2>
-          {age && gender && <p>{age + " " + gender}</p>}
-          <p>{about}</p>
-          <p>{skills}</p>
-          <div className="card-actions justify-center justify-evenly  my-4">
-            <button
-              className="btn btn-primary"
-              onClick={() => handleSendRequest("ignored", _id)}
-            >
-              Ignore
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleSendRequest("interested", _id)}
-            >
-              Interested
-            </button>
-          </div>
+        <div className="card-body p-2 text-black">
+          <h2 className="card-title text-xl font-semibold text-black">
+            {firstName} {lastName}
+          </h2>
+          {age && gender && (
+            <p className="text-sm text-black">{`${age}, ${gender}`}</p>
+          )}
+          <p className="text-black ">{about}</p>
+          <p className="text-sm text-black ">{skills}</p>
+          {showActions && ( // Conditionally show actions
+            <div className="card-actions justify-between my-4">
+              <motion.button
+                className="btn btn-primary flex items-center justify-center px-6 py-2 rounded-full text-black hover:bg-red-600 transition"
+                onClick={() => handleSendRequest("ignored", _id)}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaUserTimes className="mr-2" />
+                <span className="text-white">Ignore</span>
+              </motion.button>
+              <motion.button
+                className="btn btn-secondary flex items-center justify-center px-6 py-2 rounded-full text-black hover:bg-green-600 transition"
+                onClick={() => handleSendRequest("interested", _id)}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <FaUserCheck className="mr-2" />
+                <span className="text-white">Interested</span>
+              </motion.button>
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default userCard;
+export default UserCard;

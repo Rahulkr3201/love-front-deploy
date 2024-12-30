@@ -7,6 +7,7 @@ import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import Connections from "./components/Connections";
 import Request from "./components/Request";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </Provider>
+      <Footer />
     </>
   );
 }
