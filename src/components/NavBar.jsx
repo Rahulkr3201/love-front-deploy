@@ -22,7 +22,7 @@ const NavBar = () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
       dispatch(removeUser());
-      return navigate("/login");
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
@@ -41,11 +41,10 @@ const NavBar = () => {
           <p className="text-5xl font-bold text-white">Dev</p>
           <p className="text-5xl font-bold text-white">Tinder</p>
         </Link>
-        {/* Show Home button only if user is logged in */}
         {user && (
           <Link
             to="/"
-            className="  btn btn-primary flex items-center space-x-1 ml-16"
+            className="btn btn-primary flex items-center space-x-1 ml-16"
           >
             <FaHome />
             <span>Home</span>
@@ -74,12 +73,12 @@ const NavBar = () => {
             <ul
               tabIndex={0}
               className="dropdown-content menu p-2 bg-pink-400 rounded-box mt-2 w-52 space-y-2"
-              style={{ right: 0, zIndex: 50 }} // Ensures dropdown is visible
+              style={{ right: 0, zIndex: 50 }}
             >
               <li>
                 <Link
                   to="/profile"
-                  className="flex items-center space-x-2  text-white  hover:bg-purple-600 rounded-lg p-2"
+                  className="flex items-center space-x-2 text-white hover:bg-purple-600 rounded-lg p-2"
                 >
                   <FaUserCircle />
                   <span>Profile</span>
@@ -88,8 +87,8 @@ const NavBar = () => {
               </li>
               <li>
                 <Link
-                  to="/Connections"
-                  className="flex items-center  text-white  space-x-2 hover:bg-purple-600 rounded-lg p-2"
+                  to="/connections"
+                  className="flex items-center space-x-2 text-white hover:bg-purple-600 rounded-lg p-2"
                 >
                   <FaUsers />
                   <span>Connections</span>
@@ -98,7 +97,7 @@ const NavBar = () => {
               <li>
                 <Link
                   to="/request"
-                  className="flex items-center text-md text-white  space-x-2 hover:bg-purple-600 rounded-lg p-2"
+                  className="flex items-center space-x-2 text-white hover:bg-purple-600 rounded-lg p-2"
                 >
                   <FaUserPlus />
                   <span>Pending Requests</span>
@@ -106,7 +105,7 @@ const NavBar = () => {
               </li>
               <li>
                 <motion.a
-                  className="flex items-center space-x-2 hover:bg-red-500 text-white rounded-lg p-2"
+                  className="flex items-center space-x-2 text-white hover:bg-red-500 rounded-lg p-2"
                   onClick={handleLogOut}
                   whileHover={{ scale: 1.1 }}
                 >

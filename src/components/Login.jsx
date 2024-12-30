@@ -137,7 +137,11 @@ const Login = () => {
               </label>
             </div>
           </div>
-          {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+          {error && (
+            <p className="text-red-600 ml-20 text-sm">
+              Error : Invalid Credentials
+            </p>
+          )}
           <motion.button
             className="btn btn-primary w-full mt-6"
             onClick={isLoginForm ? handleLogin : handleSignUp}

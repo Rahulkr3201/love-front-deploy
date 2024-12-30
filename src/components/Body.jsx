@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice.js";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Body = () => {
   const dispatch = useDispatch();
