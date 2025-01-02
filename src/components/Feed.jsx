@@ -29,7 +29,7 @@ const Feed = () => {
   if (!feed || feed.length === 0) {
     return (
       <p className="btn btn-primary flex justify-center text-xl">
-        No User Found...
+        <span className="loading loading-dots loading-lg"></span>
       </p>
     );
   }
