@@ -29,27 +29,27 @@ const Feed = () => {
   if (!feed || feed.length === 0) {
     return (
       <p className="btn btn-primary flex justify-center text-xl">
-        <span className="loading loading-spinner text-primary"></span>
+        No User Found...
       </p>
     );
   }
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-start gap-6 mt-8">
+    <div className="flex flex-col md:flex-row justify-center items-start gap-6 py-7">
       {/* Center Section for Current User */}
       <div className="flex justify-center w-full md:w-2/3">
         <UserCard user={feed[0]} showActions={true} />
       </div>
 
       {/* Right Section for Upcoming Users */}
-      <div className="w-10 md:w-1/5 flex flex-col space-y-3 overflow-y-auto max-h-[500px] p-3 rounded-lg">
-        <h3 className="text-2xl font-bold text-black text-center">
-          Upcoming Users
+      <div className="w-10 md:w-1/5 flex flex-col space-y-3 overflow-y-auto max-h-[500px]  rounded-lg">
+        <h3 className="text-2xl font-bold text-white text-center">
+          Upcoming users
         </h3>
         {feed.slice(1).map((user, index) => (
           <motion.div
             key={user._id}
-            className="p-1 bg-white rounded-lg shadow-md transform scale-90"
+            className="rounded-lg shadow-md transform scale-90"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
