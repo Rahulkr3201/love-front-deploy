@@ -30,40 +30,27 @@ const Body = () => {
     if (!userData) {
       fetchUser();
     }
-  }, []);
-
-  // if (!userData) {
-  //   return (
-  //     <motion.div
-  //       className="flex flex-col items-center justify-center h-screen bg-gradient-to-t from-purple-400 to-pink-300"
-  //       initial={{ opacity: 0 }}
-  //       animate={{ opacity: 1 }}
-  //       transition={{ duration: 0.5 }}
-  //     >
-  //       <AiOutlineLoading3Quarters className="text-6xl text-blue-500 animate-spin" />
-  //       <p className="mt-4 text-lg text-gray-700">Loading...</p>
-  //     </motion.div>
-  //   );
-  // }
+  }, [userData, dispatch, navigate]);
 
   return (
-    <motion.div
-      className="min-h-screen flex flex-col bg-gradient-to-t from-purple-500 to-pink-400 "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="min-h-screen flex flex-col">
       <NavBar />
       <motion.main
-        className="flex-grow "
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
+        className="flex-grow relative bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.pexels.com/photos/1028726/pexels-photo-1028726.jpeg')",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        <Outlet />
+        {/* Overlay for readability */}
+        <div className="w-full h-full bg-black bg-opacity-50 backdrop-blur-sm">
+          <Outlet />
+        </div>
       </motion.main>
-      {/* Add Footer here if needed */}
-    </motion.div>
+    </div>
   );
 };
 
