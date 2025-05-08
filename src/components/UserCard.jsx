@@ -30,7 +30,9 @@ const UserCard = ({ user, showActions = true }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="card bg-white w-80 mt-1 mb-28 shadow-xl rounded-lg overflow-hidden">
+      <div className="card bg-white w-80 mt-1 mb-28 shadow-xl rounded-2xl overflow-hidden relative">
+        <div className="absolute inset-0 bg-black opacity-20"></div>{" "}
+        {/* Background with opacity */}
         <figure className="h-56 overflow-hidden">
           <img
             src={photoUrl}
@@ -38,7 +40,9 @@ const UserCard = ({ user, showActions = true }) => {
             className="w-full h-full object-cover"
           />
         </figure>
-        <div className="card-body p-2 text-black">
+        <div className="card-body p-2 text-black relative z-10">
+          {" "}
+          {/* Make sure content is above the background */}
           <h2 className="card-title text-xl font-semibold text-black">
             {firstName} {lastName}
           </h2>
