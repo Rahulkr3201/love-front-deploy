@@ -49,8 +49,8 @@ const Connections = () => {
   }
 
   return (
-    <div className="py-8">
-      <div className="w-full mb-8 text-center">
+    <div className="py-2">
+      <div className="w-full mb-3 text-center">
         <div className="btn btn-primary font-semibold text-gray-800">
           Connections
         </div>
