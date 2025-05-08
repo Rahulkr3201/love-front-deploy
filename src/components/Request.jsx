@@ -41,7 +41,7 @@ const Request = () => {
   if (!requests) return;
   if (requests.length === 0)
     return (
-      <div className="toast toast-top toast-center mt-16">
+      <div className="toast toast-top toast-center mt-2">
         <div className="btn btn-primary flex justify-center">
           <span>No Pending Request....</span>
         </div>
@@ -49,8 +49,8 @@ const Request = () => {
     );
 
   return (
-    <div className=" py-8">
-      <div className="w-full mb-8 text-center">
+    <div className=" py-2">
+      <div className="w-full mb-3 text-center">
         <div className="btn btn-primary font-semibold text-gray-800">
           Requests
         </div>
@@ -71,7 +71,7 @@ const Request = () => {
         return (
           <motion.div
             key={_id}
-            className="max-w-3xl mx-auto mt-2 flex flex-col md:flex-row items-center bg-gray-300 rounded-xl shadow-lg p-2 space-y-2 md:space-y-0 md:space-x-6 hover:shadow-xl transition-shadow duration-300"
+            className="max-w-3xl mx-auto  flex flex-col md:flex-row items-center bg-gray-300 rounded-xl shadow-lg  space-y-2 md:space-y-0 md:space-x-6 hover:shadow-xl transition-shadow duration-300"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
